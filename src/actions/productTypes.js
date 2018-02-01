@@ -6,7 +6,7 @@ const requestProductTypes = () => ({
 export const RECEIVE_PRODUCT_TYPES = 'RECEIVE_PRODUCT_TYPES';
 const receiveProductTypes = (json) => ({
   type: RECEIVE_PRODUCT_TYPES,
-  productTypes: json.productTypes
+  productTypes: json
 });
 
 export const fetchProductTypes = () => (dispatch) => {
@@ -15,3 +15,14 @@ export const fetchProductTypes = () => (dispatch) => {
     .then(res => res.json())
     .then(json => dispatch(receiveProductTypes(json)));
 };
+
+export const EDIT_PRODUCT_TYPE = 'EDIT_PRODUCT_TYPE';
+export const editProductType = () => ({
+  type: EDIT_PRODUCT_TYPE
+});
+
+export const REMOVE_PRODUCT_TYPE = 'REMOVE_PRODUCT_TYPE';
+export const removeProductType = () => ({
+  type: REMOVE_PRODUCT_TYPE
+});
+

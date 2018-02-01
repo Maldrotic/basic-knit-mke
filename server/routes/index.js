@@ -1,20 +1,12 @@
-module.exports = (pool) => {
+module.exports = (db) => {
   const express = require('express');
   const router = express.Router();
 
+  const productsRouter = require('./products.js');
   const productTypesRouter = require('./productTypes.js');
 
-  router.get('/test', (req, res) => {
-    return res.json({
-      items: [
-        '1',
-        '2',
-        '3'
-      ]
-    });
-  });
-
-  router.use('/product_types', productTypesRouter(pool));
+  // router.use('/products', productsRouter(db));
+  router.use('/product_types', productTypesRouter(db));
 
   return router;
 };

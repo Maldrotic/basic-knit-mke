@@ -1,36 +1,31 @@
-module.exports = (pool) => {
+module.exports = (db) => {
   const express = require('express');
   const router = express.Router();
 
   router.get('/', (req, res) => {
-    pool.getConnection((err, connection) => {
-      if (err) res.status(500).send('Error getting connection');
-
-      connection.query('SELECT * FROM product_types', (error, results) => {
-        connection.release();
-
-        if (error) throw error;
-
-        res.json({
-          productTypes: results
-        });
-      });
-    });
+    const sql = `SELECT *
+                 FROM product_types`;
+    db.query(sql)
+      .then(rows => res.json(rows))
+      .catch(reason => res.status(500).send(`SQL Error: ${reason}`));
   });
 
-  router.get('/:id', (req, res) => {
-    pool.getConnection((err, connection) => {
-      if (err) res.status(500).send('Error getting connection');
+  router.post('/', (req, res) => {
+    const parentId = req.body.parentId;
+    const name = req.body.name;
 
-      connection.query('SELECT * FROM product_types WHERE id = ?', [req.params['id']], (error, results) => {
-        connection.release();
+    if (!parentId || !name)
+      res.status(400).send('Missing POST body arguments');
 
-        if (error) throw error;
-
-        res.json(results);
-      });
-    });
+    const sql = `INSERT INTO product_types (parent_id, name)
+                 VALUES (?, ?)`;
+    const args = [parentId, name];
+    db.query(sql, args)
+      .then(rows => res.status(200).send('Successful insert'))
+      .catch(reason => res.status(500).send(`SQL Error: ${reason}`));
   });
+
+  router.post('')
 
   return router;
 };

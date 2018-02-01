@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProductTypes} from '../actions/productTypes';
+import {Link} from 'react-router-dom';
 
 class ProductTypesPage extends React.Component {
 
@@ -13,7 +14,9 @@ class ProductTypesPage extends React.Component {
       <div>
         <h1>Admin - Product Types</h1>
         <p>Fetching: {this.props.isFetching ? 'true' : 'false'}</p>
-        {this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <p key={productType.id}>{productType.name}</p>) : <p>No Product Types</p>}
+        <ul>
+          {this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <li key={productType.id}><Link to={`/admin/product_types/${productType.id}`}>{productType.name}</Link></li>) : <li><p>No Product Types</p></li>}
+        </ul>
       </div>
     );
   }

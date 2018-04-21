@@ -14,8 +14,8 @@ const ProductSquare = (props = {
   return (
     <Col sm={4} className='product-square'>
       <div className='product-square--background' style={style}>
-        <div className='product-square--text'>
-          <h4>{props.product.name}</h4>
+        <div className='product-square--text-container'>
+          <h4 className='product-square--text'>{props.product.name}</h4>
         </div>
       </div>
     </Col>

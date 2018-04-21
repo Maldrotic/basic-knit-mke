@@ -5,7 +5,7 @@ module.exports = (db) => {
   const productsRouter = require('./products.js');
   const productTypesRouter = require('./productTypes.js');
 
-  // router.use('/products', productsRouter(db));
+  router.use('/products', productsRouter(db));
   router.use('/product_types', productTypesRouter(db));
 
   return router;

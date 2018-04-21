@@ -8,10 +8,14 @@ class ProductTypeForm extends React.Component {
     super(props);
     this.state = {
       possibleParents: props.possibleParents,
-      parentId: '',
-      name: '',
+      parentId: props.productType.parentId,
+      name: props.productType.name,
       error: ''
     }
+  }
+
+  componentDidMount() {
+
   }
 
   onNameChange(e) {
@@ -50,7 +54,7 @@ class ProductTypeForm extends React.Component {
           />
           <select>
             <option value='null'>None</option>
-            {this.state.possibleParents && this.state.possibleParents.map(parent => <option value={parent.id}>{parent.name}</option>)}
+            {this.props.possibleParents && this.props.possibleParents.map(parent => <option value={parent.id}>{parent.name}</option>)}
           </select>
           <button>Add Product Type</button>
         </form>
@@ -60,7 +64,7 @@ class ProductTypeForm extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  possibleParents: getPossibleParentProductTypes(state.productTypes.data)
+  possibleParents: getPossibleParentProductTypes(state.productTypesList.productTypes)
 });
 
 const ConnectedProductTypeForm = connect(mapStateToProps)(ProductTypeForm);

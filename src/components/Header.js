@@ -1,12 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
+import {Nav, Navbar, NavItem} from 'react-bootstrap';
 
 const Header = () => (
-  <header>
-    <h1>Basic Knit</h1>
-    <NavLink to='/' activeClassName='is-active' exact={true}>Home</NavLink>
-    <NavLink to='/admin' activeClassName='is-active' exact={true}>Admin</NavLink>
-  </header>
+  <Navbar>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <Link to='/admin'>Basic Knit MKE</Link>
+      </Navbar.Brand>
+    </Navbar.Header>
+    <Nav>
+      <NavItem eventKey={1}>
+        <Link to='/admin/product_types'>Product Types</Link>
+      </NavItem>
+      <NavItem eventKey={2}>
+        <Link to='/admin/products'>Products</Link>
+      </NavItem>
+    </Nav>
+  </Navbar>
 );
 
 export default Header;

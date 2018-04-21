@@ -12,13 +12,9 @@ import AddProductTypePage from '../components/AddProductTypePage';
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      <Header/>
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
-        <Route path="/admin" component={AdminPage} exact={true}/>
-        <Route path='/admin/product_types' component={ProductTypesPage} exact={true}/>
-        <Route path='/admin/product_types/create' component={AddProductTypePage}/>
-        <Route path='/admin/product_types/:id' component={EditProductTypePage}/>
+        <Route path="/admin" component={AdminPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

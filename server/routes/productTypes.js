@@ -6,8 +6,13 @@ module.exports = (db) => {
     const sql = `SELECT *
                  FROM product_types`;
     db.query(sql)
-      .then(rows => res.json(rows))
-      .catch(reason => res.status(500).send(`SQL Error: ${reason}`));
+      .then(rows => res.status(200).json({product_types: rows}))
+      .catch(error => {
+        return res.status(500).send({
+          error: error,
+          error_message: 'Error getting products types'
+        });
+      });
   });
 
   router.post('/', (req, res) => {
@@ -22,10 +27,28 @@ module.exports = (db) => {
     const args = [parentId, name];
     db.query(sql, args)
       .then(rows => res.status(200).send('Successful insert'))
-      .catch(reason => res.status(500).send(`SQL Error: ${reason}`));
+      .catch(reason => sendSQLError(res, reason));
   });
 
-  router.post('')
+  // router.update('/:id', (req, res) => {
+  //   const productTypeId = req.params.id
+  //
+  // });
+
+  router.get('/:id', (req, res) => {
+    const id = req.params.id;
+
+    const sql = `SELECT *
+                 FROM product_types
+                 WHERE id = ?`;
+    const args = [id];
+    db.query(sql, args)
+      .then(rows => {
+        const result = rows.length > 0 ? rows[0] : {};
+        return res.json(result);
+      })
+      .catch(reason => sendSQLError(res, reason));
+  });
 
   return router;
 };

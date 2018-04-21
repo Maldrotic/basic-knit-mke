@@ -13,10 +13,11 @@ app.use(express.static(publicPath));
 
 const dbConfig = {
   connectionLimit : 10,
-  host            : '127.0.0.1',
-  user            : 'root',
-  password        : '',
-  database        : 'basic_knit'
+  host            : process.env.RDS_HOSTNAME || process.env.DB_HOST || '127.0.0.1',
+  user            : process.env.RDS_USERNAME || process.env.DB_USER || 'root',
+  password        : process.env.RDS_PASSWORD || process.env.DB_PASSWORD || '',
+  database        : process.env.RDS_DB_NAME || process.env.DB_DATABASE || 'basic_knit',
+  port            : process.env.RDS_PORT || process.env.DB_PORT || '3306'
 };
 const db = new Database(dbConfig);
 

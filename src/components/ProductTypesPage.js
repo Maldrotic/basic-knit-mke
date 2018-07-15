@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProductTypes} from '../actions/productTypes';
 import {Link} from 'react-router-dom';
-import {Breadcrumb} from 'react-bootstrap';
+import {Breadcrumb, Button, Glyphicon} from 'react-bootstrap';
 
 class ProductTypesPage extends React.Component {
 
@@ -17,6 +17,7 @@ class ProductTypesPage extends React.Component {
           <Breadcrumb.Item><Link to='/admin'>Admin</Link></Breadcrumb.Item>
           <Breadcrumb.Item><Link to='/admin/product_types'>Product Types</Link></Breadcrumb.Item>
         </Breadcrumb>
+        <Button><Glyphicon glyph='plus' />New Product Type</Button>
         <ul>
           {this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <li key={productType.id}><Link to={`/admin/product_types/${productType.id}`}>{productType.name}</Link></li>) : <li><p>No Product Types</p></li>}
         </ul>

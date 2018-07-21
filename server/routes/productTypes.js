@@ -1,19 +1,15 @@
+const asyncHandler = require('../util/asyncHandler');
+
 module.exports = (db) => {
+  const productTypesService = require('../services/productTypes')(db);
+
   const express = require('express');
   const router = express.Router();
 
-  router.get('/', (req, res) => {
-    const sql = `SELECT *
-                 FROM product_types`;
-    db.query(sql)
-      .then(rows => res.status(200).json({product_types: rows}))
-      .catch(error => {
-        return res.status(500).send({
-          error: error,
-          error_message: 'Error getting products types'
-        });
-      });
-  });
+  router.get('/', asyncHandler(async (req, res) => {
+    const productTypes = await productTypesService.getAll();
+    return res.status(200).json(productTypes);
+  }));
 
   router.post('/', (req, res) => {
     const parentId = req.body.parentId;
@@ -30,25 +26,19 @@ module.exports = (db) => {
       .catch(reason => sendSQLError(res, reason));
   });
 
-  // router.update('/:id', (req, res) => {
-  //   const productTypeId = req.params.id
-  //
-  // });
-
-  router.get('/:id', (req, res) => {
+  router.get('/:id', asyncHandler(async (req, res) => {
     const id = req.params.id;
+    const results = await productTypesService.get(id);
+    
+    if (results.length !== 1) {
+      return res.status(404).json({
+        error_message: 'Product type not found'
+      });
+    }
 
-    const sql = `SELECT *
-                 FROM product_types
-                 WHERE id = ?`;
-    const args = [id];
-    db.query(sql, args)
-      .then(rows => {
-        const result = rows.length > 0 ? rows[0] : {};
-        return res.json(result);
-      })
-      .catch(reason => sendSQLError(res, reason));
-  });
+    const productType = results[0];
+    return res.status(200).json(productType);
+  }));
 
   return router;
 };

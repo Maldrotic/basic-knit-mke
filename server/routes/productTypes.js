@@ -8,32 +8,33 @@ module.exports = (db) => {
 
   router.get('/', asyncHandler(async (req, res) => {
     const productTypes = await productTypesService.getAll();
-    return res.status(200).json(productTypes);
+    return res.status(200).json({
+      results: productTypes
+    });
   }));
 
-  router.post('/', (req, res) => {
+  router.post('/', asyncHandler(async (req, res) => {
     const parentId = req.body.parentId;
     const name = req.body.name;
 
     if (!parentId || !name)
       res.status(400).send('Missing POST body arguments');
 
-    const sql = `INSERT INTO product_types (parent_id, name)
-                 VALUES (?, ?)`;
-    const args = [parentId, name];
-    db.query(sql, args)
-      .then(rows => res.status(200).send('Successful insert'))
-      .catch(reason => sendSQLError(res, reason));
-  });
+    const newProductTypeId = await productTypesService.add({parentId, name});
+
+    return res.status(200).json({
+      product_id: newProductTypeId,
+      parent_id: parentId,
+      name: name,
+    });
+  }));
 
   router.get('/:id', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const results = await productTypesService.get(id);
     
     if (results.length !== 1) {
-      return res.status(404).json({
-        error_message: 'Product type not found'
-      });
+      return res.status(404);
     }
 
     const productType = results[0];

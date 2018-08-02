@@ -14,8 +14,16 @@ class ProductTypesPage extends React.Component {
     return (
       <div>
         <Breadcrumb>
-          <Breadcrumb.Item><Link to='/admin'>Admin</Link></Breadcrumb.Item>
-          <Breadcrumb.Item><Link to='/admin/product_types'>Product Types</Link></Breadcrumb.Item>
+          <Breadcrumb.Item componentClass={Link}
+                           href="/admin"
+                           to="/admin">
+            Admin
+          </Breadcrumb.Item>
+          <Breadcrumb.Item componentClass={Link}
+                           href="/admin/product_types"
+                           to="/admin/product_types">
+            Product Types
+          </Breadcrumb.Item>
         </Breadcrumb>
         <Button><Glyphicon glyph='plus' />New Product Type</Button>
         <ul>

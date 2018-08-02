@@ -10,11 +10,17 @@ const Header = () => (
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
-      <NavItem eventKey={1}>
-        <Link to='/admin/product_types'>Product Types</Link>
+      <NavItem componentClass={Link}
+               eventKey={1}
+               href="/admmin/product_types"
+               to="/admin/product_types" >
+        Product Types
       </NavItem>
-      <NavItem eventKey={2}>
-        <Link to='/admin/products'>Products</Link>
+      <NavItem componentClass={Link}
+               eventKey={2}
+               href="/admin/products"
+               to="/admin/products" >
+        Products
       </NavItem>
     </Nav>
   </Navbar>

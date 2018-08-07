@@ -20,10 +20,11 @@ module.exports = (db) => {
     if (!parentId || !name)
       res.status(400).send('Missing POST body arguments');
 
-    const newProductTypeId = await productTypesService.add({parentId, name});
+    const createProductTypeResult = await productTypesService.add({parentId, name});
+    const newProductTypeId = createProductTypeResult.insertId;
 
     return res.status(200).json({
-      product_id: newProductTypeId,
+      id: newProductTypeId,
       parent_id: parentId,
       name: name,
     });

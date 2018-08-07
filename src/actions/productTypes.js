@@ -54,3 +54,30 @@ export const fetchProductType = (productTypeId) => (dispatch) => {
     });
 };
 
+export const CREATE_PRODUCT_TYPE = 'CREATE_PRODUCT_TYPE';
+const requestCreateProductType = () => ({
+  type: CREATE_PRODUCT_TYPE
+});
+
+export const CREATE_PRODUCT_TYPE_SUCCESS = 'CREATE_PRODUCT_TYPE_SUCCESS';
+const createProductTypeSuccess = (productType) => ({
+  type: CREATE_PRODUCT_TYPE_SUCCESS,
+  productType
+});
+
+export const CREATE_PRODUCT_TYPE_FAILURE = 'CREATE_PRODUCT_TYPE_FAILURE';
+const createProductTypeFailure = (errorMessage) => ({
+  type: CREATE_PRODUCT_TYPE_FAILURE,
+  errorMessage
+});
+
+export const createProductType = ({parentId = null, name = null} = {}) =>  dispatch => {
+  dispatch(requestCreateProductType());
+  return productTypesService.create({parentId, name})
+    .then(productType => {
+      dispatch(createProductTypeSuccess(productType));
+    }, error => {
+      dispatch(createProductTypeFailure(error));
+    });
+};
+

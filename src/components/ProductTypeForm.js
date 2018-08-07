@@ -20,7 +20,7 @@ class ProductTypeForm extends React.Component {
               onSubmit={this.props.handleSubmit}>
           <div className="product-type-form__parent-id">
             <label htmlFor="">Parent ID</label>
-            <Field name="parent_id" component="select" type="text" disabled={this.props.isFetching} >
+            <Field name="parentId" component="select" type="text" disabled={this.props.isFetching} >
               <option value={0} />
               {this.props.productTypes.map(productType => <option key={productType.id} value={productType.id}>{productType.name}</option>)}
             </Field>

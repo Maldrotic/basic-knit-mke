@@ -43,7 +43,26 @@ const get = (productTypeId) => {
     });
 };
 
+const create = ({parentId = 0, name = null} = {}) => {
+  const requestOptions = {
+    method: 'post',
+    body: JSON.stringify({parentId, name}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  return fetch('/api/product_types', requestOptions)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Error code ${res.status}: ${res.statusText}`);
+      }
+      return res.json();
+    });
+};
+
 export const productTypesService = {
   getAll,
-  get
+  get,
+  create
 };

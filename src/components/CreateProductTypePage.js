@@ -2,6 +2,8 @@ import React from 'react';
 import ProductTypeForm from './ProductTypeForm';
 import {Link} from 'react-router-dom';
 import {Breadcrumb} from 'react-bootstrap';
+import {createProductType} from '../actions/productTypes';
+import {connect} from 'react-redux';
 
 class CreateProductTypePage extends React.Component {
 
@@ -10,8 +12,7 @@ class CreateProductTypePage extends React.Component {
   }
 
   handleSubmit(values) {
-    console.log(values);
-    this.props.history.push('/admin/product_types');
+    this.props.dispatch(createProductType(values));
   }
 
   render() {
@@ -42,4 +43,4 @@ class CreateProductTypePage extends React.Component {
 }
 
 
-export default CreateProductTypePage;
+export default connect()(CreateProductTypePage);

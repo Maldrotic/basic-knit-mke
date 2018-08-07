@@ -12,7 +12,7 @@ const Header = () => (
     <Nav>
       <NavItem componentClass={Link}
                eventKey={1}
-               href="/admmin/product_types"
+               href="/admin/product_types"
                to="/admin/product_types" >
         Product Types
       </NavItem>

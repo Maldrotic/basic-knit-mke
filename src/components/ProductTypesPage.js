@@ -12,7 +12,7 @@ class ProductTypesPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="product-types">
         <Breadcrumb>
           <Breadcrumb.Item componentClass={Link}
                            href="/admin"
@@ -25,7 +25,11 @@ class ProductTypesPage extends React.Component {
             Product Types
           </Breadcrumb.Item>
         </Breadcrumb>
-        <Button><Glyphicon glyph='plus' />New Product Type</Button>
+        <Button componentClass={Link}
+                href="/admin/product_types/create"
+                to="/admin/product_types/create" >
+          <Glyphicon glyph='plus' /> New Product Type
+        </Button>
         <ul>
           {this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <li key={productType.id}><Link to={`/admin/product_types/${productType.id}`}>{productType.name}</Link></li>) : <li><p>No Product Types</p></li>}
         </ul>

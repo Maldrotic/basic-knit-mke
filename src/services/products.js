@@ -8,6 +8,12 @@ const getAll = () => {
         throw new Error(`Error code ${res.status}: ${res.statusText}`);
       }
       return res.json();
+    })
+    .then(res => {
+      if (!res.results) {
+        return Promise.reject(res.error_message);
+      }
+      return res.results;
     });
 };
 
@@ -21,6 +27,12 @@ const getAllForProductType = (productTypeId) => {
         throw new Error(`Error code ${res.status}: ${res.statusText}`);
       }
       return res.json();
+    })
+    .then(res => {
+      if (!res.results) {
+        return Promise.reject(res.error_message);
+      }
+      return res.results;
     });
 };
 

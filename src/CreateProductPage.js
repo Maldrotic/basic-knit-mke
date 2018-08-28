@@ -28,13 +28,13 @@ class CreateProductPage extends React.Component {
             Product Types
           </Breadcrumb.Item>
           <Breadcrumb.Item componentClass={Link}
-                           href={`/admin/product_types/${this.props.productTypeId}`}
-                           to={`/admin/product_types/${this.props.productTypeId}`} >
+                           href={`/admin/product_types/${this.props.match.params.productTypeId}`}
+                           to={`/admin/product_types/${this.props.match.params.productTypeId}`} >
             {this.props.productTypeId}
           </Breadcrumb.Item>
           <Breadcrumb.Item componentClass={Link}
-                           href={`/admin/product_types/${this.props.productTypeId}/create`}
-                           to={`/admin/product_types/${this.props.productTypeId}/create`} >
+                           href={`/admin/product_types/${this.props.match.params.productTypeId}/create`}
+                           to={`/admin/product_types/${this.props.match.params.productTypeId}/create`} >
             Create
           </Breadcrumb.Item>
         </Breadcrumb>

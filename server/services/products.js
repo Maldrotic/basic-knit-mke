@@ -1,16 +1,27 @@
 module.exports = db => {
 
-  const getAllProducts = () =>
+  const getAll = () =>
     db.query(`SELECT * 
              FROM products`);
 
-  const getProduct = (id) =>
+  const getAllForProductType = (productTypeId) =>
+    db.query(`SELECT *
+              FROM products
+              WHERE product_type_id = ?`, [productTypeId]);
+
+  const get = (id) =>
     db.query(`SELECT *
               FROM products
               WHERE id = ?`, [id]);
 
+  const create = ({name = '', productTypeId = '', thumbnailUrl = ''} = {}) =>
+    db.query(`INSERT INTO products (name, product_type_id, thumbnail_url)
+              VALUES (?, ?, ?)`, [name, productTypeId, thumbnailUrl]);
+
   return {
-    getAllProducts,
-    getProduct
+    getAll,
+    getAllForProductType,
+    get,
+    create
   }
 };

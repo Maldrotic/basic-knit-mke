@@ -27,16 +27,13 @@ module.exports = db => {
    * @param name {string} the name of the product type
    * @returns {Promise} a Promise that resolves to the id of the new product type
    */
-  const add = ({parentId = undefined, name = undefined} = {}) => {
-    console.log(parentId);
-    console.log(name);
-    return db.query(`INSERT INTO product_types (parent_id, name)
-                     VALUES (?, ?)`, [parentId, name]);
-  };
+  const create = ({parentId = undefined, name = undefined} = {}) =>
+    db.query(`INSERT INTO product_types (parent_id, name)
+              VALUES (?, ?)`, [parentId, name]);
 
   return {
     getAll,
     get,
-    add
+    create
   }
 };

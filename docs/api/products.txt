@@ -1,0 +1,16 @@
+GET: /
+Response:
+    Body:
+    {
+        results: [
+            {
+
+            }
+        ],
+        count: 2,
+        page: 0,
+        limit: 25,
+        url: "localhost:3000/api/products?page=0&limit=25",
+        next: null,
+        prev: null
+    }

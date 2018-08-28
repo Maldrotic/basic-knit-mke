@@ -1,0 +1,26 @@
+GET: /
+Response:
+    Body:
+    {
+        results: [
+            {
+                id: 1,
+                name: "Knit"
+                parent_id: null,
+                url: "localhost:3000/api/product_types/1"
+            },
+            {
+                id: 2,
+                name: "Hat"
+                parent_id: 1,
+                url: "localhost:3000/api/product_types/2",
+                parent_url: "localhost:3000/api/product_types/1"
+            }
+        ],
+        count: 2,
+        page: 0,
+        limit: 25,
+        url: "localhost:3000/api/product_types?page=0&limit=25",
+        next: null,
+        prev: null
+    }

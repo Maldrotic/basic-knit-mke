@@ -2,6 +2,7 @@ const asyncHandler = require('../util/asyncHandler');
 
 module.exports = (db) => {
   const productTypesService = require('../services/productTypes')(db);
+  const productsService = require('../services/products')(db);
 
   const express = require('express');
   const router = express.Router();
@@ -18,9 +19,9 @@ module.exports = (db) => {
     const name = req.body.name;
 
     if (!parentId || !name)
-      res.status(400).send('Missing POST body arguments');
+      return res.status(400).send('Missing POST body arguments');
 
-    const createProductTypeResult = await productTypesService.add({parentId, name});
+    const createProductTypeResult = await productTypesService.create({parentId, name});
     const newProductTypeId = createProductTypeResult.insertId;
 
     return res.status(200).json({
@@ -40,6 +41,15 @@ module.exports = (db) => {
 
     const productType = results[0];
     return res.status(200).json(productType);
+  }));
+
+  router.get('/:id/products', asyncHandler(async (req, res) => {
+    const productTypeId = req.params.id;
+    const products = await productsService.getAllForProductType(productTypeId);
+
+    return res.status(200).json({
+      results: products
+    });
   }));
 
   return router;

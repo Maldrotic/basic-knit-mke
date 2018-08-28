@@ -3,15 +3,15 @@ import {selectProductType, selectProductTypesChildren} from '../selectors/produc
 import {connect} from 'react-redux';
 import {selectProductsWithProductType} from '../selectors/products';
 import {Link} from 'react-router-dom';
-import { fetchProductTypes} from '../actions/productTypes';
-import {fetchProducts} from '../actions/products';
-import {Breadcrumb} from 'react-bootstrap';
+import {fetchProductTypes} from '../actions/productTypes';
+import {fetchProductsForProductType} from '../actions/products';
+import {Breadcrumb, Button, Glyphicon} from 'react-bootstrap';
 
 class ProductTypePage extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchProductTypes());
-    this.props.dispatch(fetchProducts());
+    this.props.dispatch(fetchProductsForProductType(this.props.match.params.id));
   }
 
   render() {
@@ -36,7 +36,22 @@ class ProductTypePage extends React.Component {
         </Breadcrumb>
         { this.props.productType ? (
           <div>
+            { this.props.productTypesErrorMessage &&
+              <div className='admin__error-message'>
+                <p>{this.props.productTypesErrorMessage}</p>
+              </div>
+            }
+            { this.props.productsErrorMessage &&
+              <div className='admin__error-message'>
+                <p>{this.props.productsErrorMessage}</p>
+              </div>
+            }
             <h1>{this.props.productType.name} (ID: {this.props.productType.id})</h1>
+            <Button componentClass={Link}
+                    href={`/admin/product_types/${this.props.productType.id}/products/create`}
+                    to={`/admin/product_types/${this.props.productType.id}/products/create`}>
+              <Glyphicon glyph='plus' /> New Product
+            </Button>
             <h5>Children Product Types: {this.props.productTypes.length === 0 && <small>None</small>}</h5>
             <ul>
               {
@@ -74,7 +89,9 @@ const mapStateToProps = (state, props) => ({
   isFetching: state.productTypes.isFetching,
   productType: selectProductType(props.match.params.id, state.productTypes.productTypes),
   productTypes: selectProductTypesChildren(props.match.params.id, state.productTypes.productTypes),
-  products: selectProductsWithProductType(props.match.params.id, state.products.products)
+  products: selectProductsWithProductType(props.match.params.id, state.products.products),
+  productTypesErrorMessage: state.productTypes.errorMessage,
+  productsErrorMessage: state.products.errorMessage
 });
 
 export default connect(mapStateToProps)(ProductTypePage);

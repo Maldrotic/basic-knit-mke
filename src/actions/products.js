@@ -53,3 +53,59 @@ export const fetchProduct = (productId) => (dispatch) => {
       dispatch(getProductFailure(error));
     });
 };
+
+
+export const REQUEST_PRODUCTS_FOR_PRODUCT_TYPE = 'REQUEST_PRODUCTS_FOR_PRODUCT_TYPE';
+const requestProductsForProductType = () => ({
+  type: REQUEST_PRODUCTS_FOR_PRODUCT_TYPE
+});
+
+export const GET_PRODUCTS_FOR_PRODUCT_TYPE_SUCCESS = 'GET_PRODUCTS_FOR_PRODUCT_TYPE_SUCCESS';
+const getProductsForProductTypeSuccess = (products) => ({
+  type: GET_PRODUCTS_FOR_PRODUCT_TYPE_SUCCESS,
+  products
+});
+
+export const GET_PRODUCTS_FOR_PRODUCT_TYPE_FAILURE = 'GET_PRODUCTS_FOR_PRODUCT_TYPE_FAILURE';
+const getProductsForProductTypeFailure = (errorMessage) => ({
+  type: GET_PRODUCTS_FOR_PRODUCT_TYPE_FAILURE,
+  errorMessage
+});
+
+export const fetchProductsForProductType = (productTypeId) => (dispatch) => {
+  dispatch(requestProductsForProductType());
+  return productsService.getAllForProductType(productTypeId)
+    .then(products => {
+      dispatch(getProductsForProductTypeSuccess(products))
+    }, error => {
+      dispatch(getProductsForProductTypeFailure(error))
+    })
+};
+
+export const CREATE_PRODUCT = 'CREATE_PRODUCT';
+const requestCreateProduct = () => ({
+  type: CREATE_PRODUCT
+});
+
+export const CREATE_PRODUCT_SUCCESS = 'CREATE_PRODUCT_SUCCESS';
+const createProductSuccess = (product) => ({
+  type: CREATE_PRODUCT_SUCCESS,
+  product
+});
+
+export const CREATE_PRODUCT_FAILURE = 'CREATE_PRODUCT_FAILURE';
+const createProductFailure = (errorMessage) => ({
+  type: CREATE_PRODUCT_FAILURE,
+  errorMessage
+});
+
+export const createProduct = ({productTypeId = null, name = null} = {}) =>  dispatch => {
+  dispatch(requestCreateProduct());
+  return productsService.create({productTypeId, name})
+    .then(product => {
+      dispatch(createProductSuccess(product));
+    }, error => {
+      dispatch(createProductFailure(error));
+    });
+};
+

@@ -53,7 +53,7 @@ const get = (id) => {
 const create = ({productTypeId = 0, name = null} = {}) => {
   const requestOptions = {
     method: 'post',
-    body: JSON.stringify({parentId, name}),
+    body: JSON.stringify({productTypeId, name}),
     headers: {
       'Content-Type': 'application/json'
     }

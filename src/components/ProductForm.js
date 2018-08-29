@@ -1,6 +1,7 @@
 import React from 'react';
 import {fetchProductTypes} from '../actions/productTypes';
-import {Field} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
 
 class ProductForm extends React.Component {
 
@@ -47,7 +48,10 @@ class ProductForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
+  initialValues: {
+    productTypeId: props.selectedProductTypeId || 0
+  },
   isFetching: state.productTypes.isFetching,
   productTypes: state.productTypes.productTypes
 });

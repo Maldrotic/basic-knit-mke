@@ -3,9 +3,10 @@ import {Breadcrumb} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {createProduct} from './actions/products';
-import {fetchProductType} from './actions/productTypes';
+import {fetchProductTypes} from './actions/productTypes';
 import {selectProductType} from './selectors/productTypes';
 import ProductForm from './components/ProductForm';
+import queryString from 'query-string';
 
 class CreateProductPage extends React.Component {
   constructor(props) {
@@ -13,9 +14,7 @@ class CreateProductPage extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.productType === undefined) {
-      this.props.dispatch(fetchProductType(this.props.match.params.productTypeId));
-    }
+    this.props.dispatch(fetchProductTypes());
   }
 
   handleSubmit(values) {
@@ -46,7 +45,7 @@ class CreateProductPage extends React.Component {
             </Breadcrumb.Item>
             <Breadcrumb.Item componentClass={Link}
                              href="/admin/product_types"
-                             to="/admin/product_types" >
+                             to="/admin/products_types" >
               Product Types
             </Breadcrumb.Item>
             <Breadcrumb.Item componentClass={Link}
@@ -55,9 +54,14 @@ class CreateProductPage extends React.Component {
               {this.props.productType.name}
             </Breadcrumb.Item>
             <Breadcrumb.Item componentClass={Link}
+                             href={`/admin/product_types/${this.props.productType.id}/products`}
+                             to={`/admin/product_types/${this.props.productType.id}/products`} >
+              Products
+            </Breadcrumb.Item>
+            <Breadcrumb.Item componentClass={Link}
                              href={`/admin/product_types/${this.props.productType.id}/products/create`}
                              to={`/admin/product_types/${this.props.productType.id}/products/create`} >
-              Create New Product
+              Create
             </Breadcrumb.Item>
           </Breadcrumb>
           <ProductForm selectedProductTypeId={this.props.productType.id} onSubmit={this.handleSubmit.bind(this)} />
@@ -68,7 +72,7 @@ class CreateProductPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  isFetching: state.productTypes.isFetching || state.products.isFetching,
+  isFetching: state.productTypes.isFetching,
   productTypes: state.productTypes.productTypes,
   productType: selectProductType(props.match.params.productTypeId, state.productTypes.productTypes)
 });

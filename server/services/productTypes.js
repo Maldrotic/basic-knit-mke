@@ -12,7 +12,7 @@ module.exports = db => {
   /**
    * Gets a product type by ID.
    *
-   * @param id {int} a product type ID
+   * @param {int} id - a product type ID
    * @returns {Promise} a Promise that resolves to an array of product types with one product type.
    */
   const get = id =>
@@ -23,8 +23,8 @@ module.exports = db => {
   /**
    * Adds a new product type.
    *
-   * @param parentId {number} the parent product type's id
-   * @param name {string} the name of the product type
+   * @param {number} parentId - the parent product type's id
+   * @param {string} name - the name of the product type
    * @returns {Promise} a Promise that resolves to the id of the new product type
    */
   const create = ({parentId = undefined, name = undefined} = {}) =>

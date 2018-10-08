@@ -6,11 +6,17 @@ module.exports = (db) => {
   const express = require('express');
   const router = express.Router();
 
+  /**
+   * Get a product.
+   */
   router.get('/', asyncHandler(async (req, res) => {
     const products = await productsService.getAll();
     return res.status(200).json(products);
   }));
 
+  /**
+   * Create a new product.
+   */
   router.post('/', asyncHandler(async (req, res) => {
     const name = req.body.name;
     const productTypeId = req.body.productTypeId;
@@ -29,6 +35,9 @@ module.exports = (db) => {
     });
   }));
 
+  /**
+   * Get a product.
+   */
   router.get('/:id', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const results = await productsService.get(id);

@@ -7,6 +7,9 @@ module.exports = (db) => {
   const express = require('express');
   const router = express.Router();
 
+  /**
+   * Get all product types.
+   */
   router.get('/', asyncHandler(async (req, res) => {
     const productTypes = await productTypesService.getAll();
     return res.status(200).json({
@@ -14,6 +17,9 @@ module.exports = (db) => {
     });
   }));
 
+  /**
+   * Create a new product type.
+   */
   router.post('/', asyncHandler(async (req, res) => {
     const parentId = req.body.parentId;
     const name = req.body.name;
@@ -31,6 +37,9 @@ module.exports = (db) => {
     });
   }));
 
+  /**
+   * Get a product type by id.
+   */
   router.get('/:id', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const results = await productTypesService.get(id);
@@ -43,6 +52,9 @@ module.exports = (db) => {
     return res.status(200).json(productType);
   }));
 
+  /**
+   * Get all products for a product type.
+   */
   router.get('/:id/products', asyncHandler(async (req, res) => {
     const productTypeId = req.params.id;
     const products = await productsService.getAllForProductType(productTypeId);

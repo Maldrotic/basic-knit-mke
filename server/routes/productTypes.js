@@ -21,11 +21,15 @@ module.exports = (db) => {
    * Create a new product type.
    */
   router.post('/', asyncHandler(async (req, res) => {
-    const parentId = req.body.parentId;
+    let parentId = req.body.parentId;
     const name = req.body.name;
 
-    if (!parentId || !name)
+    if (!name)
       return res.status(400).send('Missing POST body arguments');
+
+    if (parentId == 0) {
+      parentId = undefined;
+    }
 
     const createProductTypeResult = await productTypesService.create({parentId, name});
     const newProductTypeId = createProductTypeResult.insertId;

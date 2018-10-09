@@ -50,10 +50,10 @@ const get = (id) => {
     });
 };
 
-const create = ({productTypeId = 0, name = null} = {}) => {
+const create = ({productTypeId = 0, name = null, thumbnailUrl = null} = {}) => {
   const requestOptions = {
     method: 'post',
-    body: JSON.stringify({productTypeId, name}),
+    body: JSON.stringify({productTypeId, name, thumbnailUrl}),
     headers: {
       'Content-Type': 'application/json'
     }

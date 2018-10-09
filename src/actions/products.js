@@ -99,9 +99,9 @@ const createProductFailure = (errorMessage) => ({
   errorMessage
 });
 
-export const createProduct = ({productTypeId = null, name = null} = {}) =>  dispatch => {
+export const createProduct = ({productTypeId = null, name = null, thumbnailUrl = null} = {}) =>  dispatch => {
   dispatch(requestCreateProduct());
-  return productsService.create({productTypeId, name})
+  return productsService.create({productTypeId, name, thumbnailUrl})
     .then(product => {
       dispatch(createProductSuccess(product));
     }, error => {

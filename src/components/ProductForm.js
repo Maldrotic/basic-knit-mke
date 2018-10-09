@@ -42,6 +42,13 @@ class ProductForm extends React.Component {
                      type="text"
                      disabled={this.props.isFetching} />
             </div>
+            <div className="product-form__thumbnail-url">
+              <label htmlFor="">Thumbnail URL</label>
+              <Field name="thumbnailUrl"
+                     component="input"
+                     type="text"
+                     disabled={this.props.isFetching} />
+            </div>
             <button className="product-form__submit"
                     disabled={this.props.isFetching || this.props.pristine || this.props.submitting}
                     type="submit" >

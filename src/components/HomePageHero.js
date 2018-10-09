@@ -5,7 +5,7 @@ const HomePageHero = () =>  {
     <div className='home-page-hero'>
       <div className='home-page-hero--background'>
         <div className='home-page-hero--text'>
-          <h1>Basic Knit MKE</h1>
+          <h1>Northern Fray</h1>
           <h3>Get your KNITS!</h3>
         </div>
       </div>

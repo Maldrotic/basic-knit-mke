@@ -7,11 +7,13 @@ module.exports = (db) => {
   const router = express.Router();
 
   /**
-   * Get a product.
+   * Get all products.
    */
   router.get('/', asyncHandler(async (req, res) => {
     const products = await productsService.getAll();
-    return res.status(200).json(products);
+    return res.status(200).json({
+      results: products
+    });
   }));
 
   /**

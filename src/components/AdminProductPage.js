@@ -15,9 +15,21 @@ class AdminProductPage extends React.Component {
     return (
       <div>
         <Breadcrumb>
-          <Breadcrumb.Item><Link to='/admin'>Admin</Link></Breadcrumb.Item>
-          <Breadcrumb.Item><Link to='/admin/products'>Products</Link></Breadcrumb.Item>
-          <Breadcrumb.Item><Link to={`/admin/products/${this.props.match.params.id}`}>{this.props.match.params.id}</Link></Breadcrumb.Item>
+          <Breadcrumb.Item componentClass={Link}
+                           href="/admin"
+                           to="/admin" >
+            Admin
+          </Breadcrumb.Item>
+          <Breadcrumb.Item componentClass={Link}
+                           href="/admin/products"
+                           to="/admin/products" >
+            Products
+          </Breadcrumb.Item>
+          <Breadcrumb.Item componentClass={Link}
+                           href={`/admin/products/${this.props.match.params.id}`}
+                           to={`/admin/products/${this.props.match.params.id}`} >
+            {this.props.match.params.id}
+          </Breadcrumb.Item>
         </Breadcrumb>
         { this.props.product ? (
           <div>

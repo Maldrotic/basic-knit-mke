@@ -6,7 +6,7 @@ import ProductTypePage from './ProductTypePage';
 import AdminProductPage from './AdminProductPage';
 import {Grid} from 'react-bootstrap';
 import CreateProductTypePage from './CreateProductTypePage';
-import CreateProductPage from '../CreateProductPage';
+import CreateProductPage from './CreateProductPage';
 
 const AdminPage = ({match}) => (
   <div className='admin'>
@@ -18,8 +18,9 @@ const AdminPage = ({match}) => (
         <Route path={`${match.url}/product_types/create`} component={CreateProductTypePage} exact={true} />
         <Route path={`${match.url}/product_types/:id`} component={ProductTypePage} exact={true} />
         {/*<Route path={`${match.url}/products`} component={AdminProductsPage} exact={true} />*/}
+        <Route path={`${match.url}/products/create`} component={CreateProductPage} exact={true} />
         <Route path={`${match.url}/products/:id`} component={AdminProductPage} exact={true} />
-        <Route path={`${match.url}/product_types/:productTypeId/products/create`} component={CreateProductPage} exact={true} />
+        {/*<Route path={`${match.url}/product_types/:productTypeId/products/create`} component={CreateProductPage} exact={true} />*/}
       </Switch>
     </Grid>
   </div>

@@ -48,8 +48,8 @@ class ProductTypePage extends React.Component {
             }
             <h1>{this.props.productType.name} (ID: {this.props.productType.id})</h1>
             <Button componentClass={Link}
-                    href={`/admin/product_types/${this.props.productType.id}/products/create`}
-                    to={`/admin/product_types/${this.props.productType.id}/products/create`}>
+                    href={`/admin/products/create?productTypeId=${this.props.productType.id}`}
+                    to={`/admin/products/create?productTypeId=${this.props.productType.id}`} >
               <Glyphicon glyph='plus' /> New Product
             </Button>
             <h5>Children Product Types: {this.props.productTypes.length === 0 && <small>None</small>}</h5>

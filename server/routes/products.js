@@ -23,6 +23,7 @@ module.exports = (db) => {
     const name = req.body.name;
     const productTypeId = req.body.productTypeId;
     const thumbnailUrl = req.body.thumbnailUrl;
+    const photo = req.body.photo;
 
     if (!name || !productTypeId)
       return res.status(400).send('Missing POST body arguments');
@@ -51,7 +52,9 @@ module.exports = (db) => {
     }
 
     const product = results[0];
-    return res.status(200).json(product);
+    return res.status(200).json({
+      product
+    });
   }));
 
   return router;

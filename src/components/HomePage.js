@@ -5,7 +5,7 @@ import {fetchProductTypes} from '../actions/productTypes';
 import ProductList from './ProductList';
 import {selectBaseProductTypes} from '../selectors/productTypes';
 import {fetchProducts} from '../actions/products';
-import {Col, Grid, Row} from 'react-bootstrap';
+import {Col, Container, Row} from 'react-bootstrap';
 
 class HomePage extends React.Component {
 
@@ -18,9 +18,9 @@ class HomePage extends React.Component {
     return (
       <div className='home-page'>
         <HomePageHero/>
-        <Grid>
+        <Container>
           <Row className='product-list-container'>
-            <Col md={10} mdOffset={1}>
+            <Col md={10} mdoffset={1}>
               {
                 this.props.productTypes.map((productType) => {
                   const products = this.props.products;
@@ -29,7 +29,7 @@ class HomePage extends React.Component {
               }
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

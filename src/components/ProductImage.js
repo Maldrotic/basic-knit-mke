@@ -1,21 +1,18 @@
 import React from 'react';
-import Image from 'react-bootstrap/lib/Image';
 
 const ProductImage = (props = {
   url: ''
 }) => {
-  // const style = {
-  //   background: `url(${props.url}) center no-repeat `,
-  //   height: '100%',
-  //   backgroundSize: 'cover',
-  //   position: 'relative'
-  // };
+  const style = {
+    background: `url(${props.url}) center no-repeat `,
+    backgroundSize: 'cover',
+    position: 'relative'
+  };
 
-  // return (
-  //   <div className='product-image--background' style={style}>
-  //   </div>
-  // );
-  return <Image src={props.url} fluid />;
+  return (
+    <div className='product__image' style={style}>
+    </div>
+  );
 };
 
 export default ProductImage;

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductSquare from './ProductSquare';
 import {Col, Row} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 const ProductList = (props = {
   productType: 'Product Type',
@@ -14,7 +15,7 @@ const ProductList = (props = {
       <Col sm={9} className='product-list--products'>
         {
           props.products.map(product => (
-            <ProductSquare product={product} key={product.id}/>
+            <ProductSquare product={product} key={product.id} />
           ))
         }
       </Col>

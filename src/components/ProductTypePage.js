@@ -18,19 +18,17 @@ class ProductTypePage extends React.Component {
     return (
       <div>
         <Breadcrumb>
-          <Breadcrumb.Item componentClass={Link}
-                           href="/admin"
-                           to="/admin">
+          <Breadcrumb.Item
+                           href="/admin">
             Admin
           </Breadcrumb.Item>
-          <Breadcrumb.Item componentClass={Link}
-                           href="/admin/product_types"
-                           to="/admin/product_types">
+          <Breadcrumb.Item
+                           href="/admin/product_types">
             Product Types
           </Breadcrumb.Item>
-          <Breadcrumb.Item componentClass={Link}
+          <Breadcrumb.Item
                            href={`/admin/product_types/${this.props.match.params.id}`}
-                           to={`/admin/product_types/${this.props.match.params.id}`}>
+                           >
             {this.props.match.params.id}
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -47,7 +45,7 @@ class ProductTypePage extends React.Component {
               </div>
             }
             <h1>{this.props.productType.name} (ID: {this.props.productType.id})</h1>
-            <Button componentClass={Link}
+            <Button as={Link}
                     href={`/admin/products/create?productTypeId=${this.props.productType.id}`}
                     to={`/admin/products/create?productTypeId=${this.props.productType.id}`} >
               <Glyphicon glyph='plus' /> New Product

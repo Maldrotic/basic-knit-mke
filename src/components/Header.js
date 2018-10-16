@@ -1,29 +1,36 @@
 import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
-import {Nav, Navbar, NavItem} from 'react-bootstrap';
+import {Nav, Navbar} from 'react-bootstrap';
 
-const Header = () => (
-  <Navbar>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <Link to='/admin'>Basic Knit MKE</Link>
-      </Navbar.Brand>
-    </Navbar.Header>
-    <Nav>
-      <NavItem componentClass={Link}
-               eventKey={1}
-               href="/admin/product_types"
-               to="/admin/product_types" >
-        Product Types
-      </NavItem>
-      <NavItem componentClass={Link}
-               eventKey={2}
-               href="/admin/products"
-               to="/admin/products" >
-        Products
-      </NavItem>
-    </Nav>
-  </Navbar>
-);
+class Header extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <Navbar bg='light' variant='light' expand='md' fixed='top'>
+        <Navbar.Brand href='#'>
+          Northern Fray
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+        <Nav>
+          <Nav.Link href="">
+            Home
+          </Nav.Link>
+          <Nav.Link href="products">
+            Products
+          </Nav.Link>
+          <Nav.Link href="admin">
+            Admin
+          </Nav.Link>
+        </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
+
+}
 
 export default Header;

@@ -6,6 +6,8 @@ import ProductList from './ProductList';
 import {selectBaseProductTypes} from '../selectors/productTypes';
 import {fetchProducts} from '../actions/products';
 import {Col, Container, Row} from 'react-bootstrap';
+import Header from './Header';
+import StickyHeader from './StickyHeader';
 
 class HomePage extends React.Component {
 
@@ -17,10 +19,14 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className='home-page'>
+        {/*<Header />*/}
         <HomePageHero/>
+        <StickyHeader />
+        {/*<Row className='home-page__header'>*/}
+        {/*</Row>*/}
         <Container>
           <Row className='product-list-container'>
-            <Col md={10} mdoffset={1}>
+            <Col md={10} mdoffset={1} data-spy='scroll' target='.sticky-header1' data-offset='0'>
               {
                 this.props.productTypes.map((productType) => {
                   const products = this.props.products;

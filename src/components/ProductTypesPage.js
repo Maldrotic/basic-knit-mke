@@ -14,25 +14,25 @@ class ProductTypesPage extends React.Component {
     return (
       <div className="product-types">
         <Breadcrumb>
-          <Breadcrumb.Item componentClass={Link}
+          <Breadcrumb.Item
                            href="/admin"
-                           to="/admin">
+                           >
             Admin
           </Breadcrumb.Item>
-          <Breadcrumb.Item componentClass={Link}
+          <Breadcrumb.Item
                            href="/admin/product_types"
-                           to="/admin/product_types">
+                           >
             Product Types
           </Breadcrumb.Item>
         </Breadcrumb>
-        <Button componentClass={Link}
+        <Button
                 href="/admin/product_types/create"
-                to="/admin/product_types/create" >
-          <Glyphicon glyph='plus' /> New Product Type
+                >
+          + New Product Type
         </Button>
-        <ul>
-          {this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <li key={productType.id}><Link to={`/admin/product_types/${productType.id}`}>{productType.name}</Link></li>) : <li><p>No Product Types</p></li>}
-        </ul>
+        {/*<ul>*/}
+          {/*{this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <li key={productType.id}><Link to={`/admin/product_types/${productType.id}`}>{productType.name}</Link></li>) : <li><p>No Product Types</p></li>}*/}
+        {/*</ul>*/}
       </div>
     );
   }

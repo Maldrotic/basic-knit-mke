@@ -1,17 +1,17 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import ProductTypesPage from './ProductTypesPage';
-import Header from './Header';
+import AdminHeader from './AdminHeader';
 import ProductTypePage from './ProductTypePage';
 import AdminProductPage from './AdminProductPage';
-import {Grid} from 'react-bootstrap';
 import CreateProductTypePage from './CreateProductTypePage';
 import CreateProductPage from './CreateProductPage';
+import {Container} from 'react-bootstrap';
 
 const AdminPage = ({match}) => (
   <div className='admin'>
-    <Header />
-    <Grid>
+    <AdminHeader />
+    <Container>
       <h1>Welcome to the Basic Knit Admin!</h1>
       <Switch>
         <Route path={`${match.url}/product_types`} component={ProductTypesPage} exact={true} />
@@ -20,9 +20,9 @@ const AdminPage = ({match}) => (
         {/*<Route path={`${match.url}/products`} component={AdminProductsPage} exact={true} />*/}
         <Route path={`${match.url}/products/create`} component={CreateProductPage} exact={true} />
         <Route path={`${match.url}/products/:id`} component={AdminProductPage} exact={true} />
-        {/*<Route path={`${match.url}/product_types/:productTypeId/products/create`} component={CreateProductPage} exact={true} />*/}
+        <Route path={`${match.url}/product_types/:productTypeId/products/create`} component={CreateProductPage} exact={true} />
       </Switch>
-    </Grid>
+    </Container>
   </div>
 );
 

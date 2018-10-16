@@ -7,7 +7,7 @@ const ProductList = (props = {
   productType: 'Product Type',
   products: []
 }) => (
-    <Row className='product-list'>
+    <Row className='product-list' id={props.productType}>
       <Col sm={2} className='product-list--description'>
         <h4 className='product-list--description__name'><strong>{props.productType}</strong></h4>
         <hr/>

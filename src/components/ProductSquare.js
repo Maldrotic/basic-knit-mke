@@ -1,12 +1,7 @@
-import React, {Component} from 'react'
-import {Col} from 'react-bootstrap';
+import React from 'react'
 import {withRouter} from 'react-router-dom';
 
-class ProductSquare extends Component {
-
-  state = {
-    redirect: false
-  };
+class ProductSquare extends React.Component {
 
   constructor(props) {
     super(props);
@@ -27,13 +22,13 @@ class ProductSquare extends Component {
     };
 
     return (
-      <Col sm={4} className='product-square' onClick={this.handleClick}>
+      <div className='product-square' onClick={this.handleClick}>
         <div className='product-square--background' style={style}>
           <div className='product-square--text-container'>
             <h4 className='product-square--text'>{this.props.product.name}</h4>
           </div>
         </div>
-      </Col>
+      </div>
     );
   }
 }

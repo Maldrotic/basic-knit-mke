@@ -1,5 +1,6 @@
 import React from 'react';
-import {Nav, Navbar} from 'react-bootstrap';
+import HeaderTitle from './HeaderTitle';
+import HeaderItem from './HeaderItem';
 
 class Header extends React.Component {
 
@@ -9,25 +10,27 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Navbar bg='light' variant='light' expand='md' fixed='top'>
-        <Navbar.Brand href='#'>
-          Northern Fray
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-        <Nav>
-          <Nav.Link href="">
-            Home
-          </Nav.Link>
-          <Nav.Link href="products">
-            Products
-          </Nav.Link>
-          <Nav.Link href="admin">
-            Admin
-          </Nav.Link>
-        </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <header style={this.props.style} className='header'>
+        <div className='header__container header__left'>
+          <HeaderItem>
+            Knits
+          </HeaderItem>
+          <HeaderItem>
+            Felts
+          </HeaderItem>
+        </div>
+        <div className='header__container header__center'>
+          <HeaderTitle />
+        </div>
+        <div className='header__container header__right'>
+          <HeaderItem>
+            Denim
+          </HeaderItem>
+          <HeaderItem>
+            Crochets
+          </HeaderItem>
+        </div>
+      </header>
     );
   }
 

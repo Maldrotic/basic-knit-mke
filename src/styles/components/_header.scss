@@ -1,7 +1,37 @@
-.bg-whitesmoke {
-  background-color: whitesmoke;
+.header {
+  background-color: darkgray;
+  z-index: 10;
+  display: flex;
+  align-items: center;
 }
 
-.header-link {
+.header__container {
+  padding: $m-size;
+}
+
+.header__left {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__center {
+  flex: 0 1 auto;
+  display: flex;
+}
+
+.header__right {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header__title {
+  margin: 0 1rem;
+  font-weight: 800;
   font-size: 2rem;
+}
+
+.header__item {
+  margin: 0 1rem;
 }

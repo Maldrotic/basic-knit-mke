@@ -1,7 +1,10 @@
 .product-square {
   height: $m-container;
+  width: $m-container;
   margin-top: $s-size;
   margin-bottom: $s-size;
+  margin-right: $l-size;
+  position: relative;
 }
 
 .product-square:hover {

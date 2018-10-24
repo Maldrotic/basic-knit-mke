@@ -5,11 +5,11 @@ import {connect} from 'react-redux';
 import {selectProductTypeForProduct} from '../selectors/productTypes';
 import {fetchProductType} from '../actions/productTypes';
 import ProductImage from './ProductImage';
-import {Col, Row} from 'react-bootstrap';
 import ProductName from './ProductName';
 import ProductTypeName from './ProductTypeName';
 import ProductDescription from './ProductDescription';
 import ProductPrice from './ProductPrice';
+import Header from './Header';
 
 class ProductPage extends React.Component {
 
@@ -24,31 +24,42 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    if (this.props.product && this.props.productType) {
       return (
-        <div className="product">
-          <Col className='product__left' sm={6}>
-            <Row>
-              <ProductImage url={this.props.product.thumbnail_url}/>
-            </Row>
-          </Col>
-          <Col className='product__right' sm={6}>
-            <Row>
-              <ProductName product={this.props.product} />
-              <ProductTypeName productType={this.props.productType} />
-              <ProductDescription product={this.props.product} />
-              <ProductPrice product={this.props.product} />
-            </Row>
-          </Col>
+        <div className="product-page">
+          <Header />
+          {
+            this.props.product && this.props.productType ?
+            (
+              <div className='product-page__content-container'>
+                <div className='product-page__content product-page__content--left-container'>
+                  <ProductImage url={this.props.product.thumbnail_url}/>
+                </div>
+                <div className='product-page__content product-page__content--right-container'>
+                  <div className='product-page__content--right-top'>
+                    <ProductName product={this.props.product} />
+                  </div>
+                  <div className='product-page__content--right-center'>
+                    <ProductTypeName productType={this.props.productType} />
+                    <ProductDescription product={this.props.product} />
+                    <ProductPrice product={this.props.product} />
+                    {/*<ProductColors product={this.props.product} />*/}
+                    {/*<ProductMaterial product={this.props.product} />*/}
+                  </div>
+                  <div className='product-page__content--right-bottom'>
+                    <button className='button button-request' disabled>
+                      Request
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="product-page__content-container">
+                Loading product...
+              </div>
+            )
+          }
         </div>
       );
-    } else {
-      return (
-        <div className="product">
-          Loading product...
-        </div>
-      );
-    }
   }
 }
 

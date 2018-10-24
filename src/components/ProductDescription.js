@@ -4,7 +4,7 @@ const ProductDescription = (props = {
   product: {}
 }) => {
   return (
-    <div>{props.product.description}</div>
+    <div className='product__description'>{props.product.description}</div>
   );
 };
 

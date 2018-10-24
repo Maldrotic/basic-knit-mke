@@ -4,7 +4,7 @@ const ProductName = (props = {
   product: {}
 }) => {
   return (
-    <p className='product__name'>{props.product.name}</p>
+    <div className='product__name'>{props.product.name}</div>
   )
 };
 

@@ -5,7 +5,7 @@ const ProductPrice = (props = {
 }) => {
   return (
     <div className='product__price'>
-      {props.product.price}
+      ${props.product.price / 100.0}
     </div>
   );
 };

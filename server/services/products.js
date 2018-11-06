@@ -43,10 +43,25 @@ module.exports = db => {
     db.query(`INSERT INTO products (name, product_type_id, thumbnail_url)
               VALUES (?, ?, ?)`, [name, productTypeId, thumbnailUrl]);
 
+  /**
+   * Updates a products primary image id
+   *
+   * @param {int} id - the id of the product
+   * @param {int} product_image_id - the id of the product image
+   * @returns {*}
+   */
+  const updatePrimaryImageId = (id, product_image_id) =>
+    db.query(`
+      UPDATE products
+      SET primary_image_id = ?
+      WHERE id = ?
+    `, [product_image_id, id]);
+
   return {
     getAll,
     getAllForProductType,
     get,
-    create
+    create,
+    updatePrimaryImageId
   }
 };

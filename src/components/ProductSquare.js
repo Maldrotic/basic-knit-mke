@@ -14,8 +14,11 @@ class ProductSquare extends React.Component {
 
   render() {
 
+    const primaryImage = this.props.product.images.find(image => this.props.product.id === image.id);
+    const primaryImageUrl = primaryImage && primaryImage.url;
+
     const style = {
-      background: `url(${this.props.product.thumbnail_url}) center no-repeat `,
+      background: `url(${primaryImageUrl}) center no-repeat `,
       height: '100%',
       backgroundSize: 'cover',
       position: 'relative'

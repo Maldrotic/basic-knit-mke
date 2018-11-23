@@ -23,6 +23,11 @@ class ProductPage extends React.Component {
     }
   }
 
+  renderPrimaryProductImage(primaryImageId, images) {
+    const primaryImage = images.find(image => primaryImageId === image.id);
+    return primaryImage && <ProductImage url={primaryImage.url} />;
+  }
+
   render() {
       return (
         <div className="product-page">
@@ -32,7 +37,9 @@ class ProductPage extends React.Component {
             (
               <div className='product-page__content-container'>
                 <div className='product-page__content product-page__content--left-container'>
-                  <ProductImage url={this.props.product.thumbnail_url}/>
+                  { this.props.product.primary_image_id && (
+                    this.renderPrimaryProductImage(this.props.product.primary_image_id, this.props.product.images)
+                  )}
                 </div>
                 <div className='product-page__content product-page__content--right-container'>
                   <div className='product-page__content--right-top'>

@@ -19,6 +19,7 @@ const dbConfig = {
   database        : process.env.RDS_DB_NAME || process.env.DB_DATABASE || 'basic_knit',
   port            : process.env.RDS_PORT || process.env.DB_PORT || '3306'
 };
+console.log(dbConfig);
 const db = new Database(dbConfig);
 
 app.use('/api', indexRouter(db));

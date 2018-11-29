@@ -9,6 +9,7 @@
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "start": "node $NODE_DEBUG_OPTION server/server.js",
+    "start:prod": "pm2 start server/server.js",
     "debug": "node $NODE_DEBUG_OPTION server/server.js",
     "test": "jest"
   },

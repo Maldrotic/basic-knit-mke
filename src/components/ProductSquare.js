@@ -14,7 +14,7 @@ class ProductSquare extends React.Component {
 
   render() {
 
-    const primaryImage = this.props.product.images.find(image => this.props.product.id === image.id);
+    const primaryImage = this.props.product.images.find(image => this.props.product.id === image.id, this);
     const primaryImageUrl = primaryImage && primaryImage.url;
 
     const style = {

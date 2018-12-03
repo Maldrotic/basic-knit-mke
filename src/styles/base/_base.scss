@@ -4,13 +4,9 @@ html {
 }
 
 body {
-  font-family: 'Lora', serif;
+  font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
   font-size: $m-size;
   width: 100%;
-}
-
-button {
-  cursor: pointer;
 }
 
 button:disabled {

@@ -2,7 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProductTypes} from '../actions/productTypes';
 import {Link} from 'react-router-dom';
-import {Breadcrumb, Button, Glyphicon} from 'react-bootstrap';
+import AdminPageTitle from './AdminPageTitle';
+import PrimaryButton from './PrimaryButton';
+import ProductSummaryCard from './ProductSummaryCard';
 
 class ProductTypesPage extends React.Component {
 
@@ -13,26 +15,41 @@ class ProductTypesPage extends React.Component {
   render() {
     return (
       <div className="product-types">
-        <Breadcrumb>
-          <Breadcrumb.Item
-                           href="/admin"
-                           >
-            Admin
-          </Breadcrumb.Item>
-          <Breadcrumb.Item
-                           href="/admin/product_types"
-                           >
-            Product Types
-          </Breadcrumb.Item>
-        </Breadcrumb>
-        <Button
-                href="/admin/product_types/create"
-                >
-          + New Product Type
-        </Button>
-        {/*<ul>*/}
-          {/*{this.props.productTypes.length > 0 ? this.props.productTypes.map(productType => <li key={productType.id}><Link to={`/admin/product_types/${productType.id}`}>{productType.name}</Link></li>) : <li><p>No Product Types</p></li>}*/}
-        {/*</ul>*/}
+        {/* TODO: One day have breadcrumbs here */}
+        <AdminPageTitle>Product Types</AdminPageTitle>
+        <div className='product-types__actions'>
+          {/* TODO: show actions that can be done for product types */}
+          <div className='actions__left'>
+
+          </div>
+          <div className='actions__right'>
+            <PrimaryButton>Add Product Type</PrimaryButton>
+          </div>
+        </div>
+        <div className='product-types__lists'>
+          {/* TODO: loop through all product types and show products / stats at a glance */}
+          {this.props.productTypes && this.props.productTypes.map(productType => (
+            <div className='product-type-overview' id={`product-type-overview-${productType.id}`} key={productType.id}>
+              <div className='product-type-overview__header'>
+                <div className='product-type-overview__header--left'>
+                  <h3>{productType.name}</h3>
+                  <h5>{productType.id}</h5>
+                </div>
+                <div className='product-type-overview__header--right'>
+                  <PrimaryButton>
+                    Add Product
+                  </PrimaryButton>
+                </div>
+              </div>
+              <hr/>
+              <div className='product-type-overview__product-list'>
+                {productType.products && productType.products.map(product => (
+                  <ProductSummaryCard product={product} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

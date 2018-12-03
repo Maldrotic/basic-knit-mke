@@ -1,0 +1,40 @@
+.button {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 0 0 3px;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  color: $primary-color;
+  cursor: pointer;
+  text-align: center;
+  transition: all 200ms ease-in-out 0s;
+}
+
+.button--primary {
+  background-color: $primary-color;
+  color: $light-text-color;
+}
+
+.button--secondary {
+  background-color: $secondary-color;
+  color: $light-text-color;
+}
+
+.button--tertiary {
+  background-color: $tertiary-color;
+  color: $light-text-color;
+}
+
+.button--positive {
+  background-color: $positive-color;
+  color: $light-text-color;
+}
+
+.button--negative {
+  background-color: $negative-color;
+  color: $light-text-color;
+}
+
+.button--neutral {
+  background-color: $neutral-color;
+  color: $light-text-color;
+}

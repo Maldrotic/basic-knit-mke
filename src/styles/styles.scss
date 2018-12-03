@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Lora');
-
 @import './base/settings';
 @import './base/base';
 
+@import './components/adminPage';
+@import './components/button';
+@import './components/header';
 @import './components/homePage';
 @import './components/homePageHero';
 @import './components/productList';
-@import './components/productSquare';
-@import './components/adminPage';
 @import './components/productPage';
-@import './components/header';
+@import './components/productSquare';

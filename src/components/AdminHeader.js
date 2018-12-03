@@ -1,15 +1,19 @@
 import React from 'react';
 
 const AdminHeader = () => (
-  <div className='header'>
-    <div className='header__left'>
-      Northern Fray Admin
+  <div className='admin_header'>
+    <div className='admin_header__container admin_header__container--left'>
+      <div className='admin_header__item admin_header__item--title'>
+        Northern Fray Admin
+      </div>
     </div>
-    <div className='header__center'>
-      Search
+    <div className='admin_header__container admin_header__container--center'>
+
     </div>
-    <div className='header__right'>
-      User
+    <div className='admin_header__container admin_header__container--right'>
+      <div className='admin_header__item'>
+        Welcome, user!
+      </div>
     </div>
   </div>
 );

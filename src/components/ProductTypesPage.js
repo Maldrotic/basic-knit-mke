@@ -14,7 +14,7 @@ class ProductTypesPage extends React.Component {
 
   render() {
     return (
-      <div className="product-types">
+      <div className="product-types admin__container">
         {/* TODO: One day have breadcrumbs here */}
         <AdminPageTitle>Product Types</AdminPageTitle>
         <div className='product-types__actions'>

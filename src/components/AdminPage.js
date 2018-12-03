@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import ProductTypesPage from './ProductTypesPage';
 import AdminHeader from './AdminHeader';
+import AdminHomePage from './AdminHomePage';
 // import ProductTypePage from './ProductTypePage';
 // import AdminProductPage from './AdminProductPage';
 // import CreateProductTypePage from './CreateProductTypePage';
@@ -10,8 +11,8 @@ import AdminHeader from './AdminHeader';
 const AdminPage = ({match}) => (
   <div className='admin'>
     <AdminHeader />
-    <h1>Welcome to the Basic Knit Admin!</h1>
     <Switch>
+      <Route path={`${match.url}`} component={AdminHomePage} exact={true} />
       <Route path={`${match.url}/product_types`} component={ProductTypesPage} exact={true} />
       {/*<Route path={`${match.url}/product_types/create`} component={CreateProductTypePage} exact={true} />*/}
       {/*<Route path={`${match.url}/product_types/:id`} component={ProductTypePage} exact={true} />*/}

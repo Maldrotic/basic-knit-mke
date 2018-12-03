@@ -19,10 +19,10 @@ class ProductTypesPage extends React.Component {
         <AdminPageTitle>Product Types</AdminPageTitle>
         <div className='product-types__actions'>
           {/* TODO: show actions that can be done for product types */}
-          <div className='actions__left'>
+          <div className='product-types__actions--left'>
 
           </div>
-          <div className='actions__right'>
+          <div className='product-types__actions--right'>
             <PrimaryButton>Add Product Type</PrimaryButton>
           </div>
         </div>
@@ -33,6 +33,7 @@ class ProductTypesPage extends React.Component {
               <div className='product-type-overview__header'>
                 <div className='product-type-overview__header--left'>
                   <h3>{productType.name}</h3>
+                  <br/>
                   <h5>{productType.id}</h5>
                 </div>
                 <div className='product-type-overview__header--right'>

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import AdminPageTitle from './AdminPageTitle';
 import PrimaryButton from './PrimaryButton';
 import ProductSummaryCard from './ProductSummaryCard';
+import NegativeButton from './NegativeButton';
 
 class ProductTypesPage extends React.Component {
 
@@ -40,6 +41,9 @@ class ProductTypesPage extends React.Component {
                   <PrimaryButton>
                     Add Product
                   </PrimaryButton>
+                  <NegativeButton>
+                    X
+                  </NegativeButton>
                 </div>
               </div>
               <hr/>

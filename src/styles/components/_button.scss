@@ -2,11 +2,12 @@
   border-radius: 6px;
   border-style: solid;
   border-width: 0 0 3px;
-  //box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
   color: $primary-color;
   cursor: pointer;
   text-align: center;
   transition: all 200ms ease-in-out 0s;
+  margin: $xs-size;
 }
 
 .button--primary {
@@ -38,7 +39,14 @@
 
 .button--negative {
   background-color: $negative-color;
+  border-color: darken($negative-color, 10%);
   color: $light-text-color;
+}
+
+.button--negative:hover, .button--negative:focus {
+  background-color: darken($negative-color, 5%);
+  border-color: darken($negative-color, 15%);
+  color: lighten($light-text-color, 5%);
 }
 
 .button--neutral {

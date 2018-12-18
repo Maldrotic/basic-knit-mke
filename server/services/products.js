@@ -7,7 +7,7 @@ module.exports = db => {
    */
   const getAll = () =>
     db.query(`SELECT * 
-             FROM products`);
+              FROM products`);
 
   /**
    * Get all products for a specific product type from the database.

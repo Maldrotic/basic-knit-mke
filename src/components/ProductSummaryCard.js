@@ -1,23 +1,23 @@
 import React from 'react';
+import Card from './Card';
 
 const ProductSummaryCard = (props = {
   product: undefined
 }) => (
   props.product &&
-  <div
+  <Card
     className='product-summary-card'
     id={`product-summary-card-${props.product.id}`}
-    key={props.product.id}
   >
-    <div className='card__header'>
+    <div className='product-summary-card__header'>
       {props.product.name}
       {props.product.id}
     </div>
-    <div className='card__content'>
+    <div className='product-summary-card__content'>
     </div>
-    <div className='card__footer'>
+    <div className='product-summary-card__footer'>
     </div>
-  </div>
+  </Card>
 );
 
 export default ProductSummaryCard;

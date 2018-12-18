@@ -3,7 +3,7 @@ import Button from './button';
 
 const PrimaryButton = (props) => (
   <Button className='button--primary'>
-    {props.children}
+    {props.text}
   </Button>
 );
 

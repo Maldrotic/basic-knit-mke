@@ -6,11 +6,15 @@ import AdminPageTitle from './AdminPageTitle';
 import PrimaryButton from './PrimaryButton';
 import ProductSummaryCard from './ProductSummaryCard';
 import NegativeButton from './NegativeButton';
+import {fetchProducts} from '../actions/products';
+import {selectProductsWithProductType} from '../selectors/products';
+import ProductTypeCard from './ProductTypeCard';
 
 class ProductTypesPage extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchProductTypes());
+    this.props.dispatch(fetchProducts());
   }
 
   render() {
@@ -24,35 +28,13 @@ class ProductTypesPage extends React.Component {
 
           </div>
           <div className='product-types__actions--right'>
-            <PrimaryButton>Add Product Type</PrimaryButton>
+            <PrimaryButton text='Add Product Type' />
           </div>
         </div>
         <div className='product-types__lists'>
           {/* TODO: loop through all product types and show products / stats at a glance */}
           {this.props.productTypes && this.props.productTypes.map(productType => (
-            <div className='product-type-overview' id={`product-type-overview-${productType.id}`} key={productType.id}>
-              <div className='product-type-overview__header'>
-                <div className='product-type-overview__header--left'>
-                  <h3>{productType.name}</h3>
-                  <br/>
-                  <h5>{productType.id}</h5>
-                </div>
-                <div className='product-type-overview__header--right'>
-                  <PrimaryButton>
-                    Add Product
-                  </PrimaryButton>
-                  <NegativeButton>
-                    X
-                  </NegativeButton>
-                </div>
-              </div>
-              <hr/>
-              <div className='product-type-overview__product-list'>
-                {productType.products && productType.products.map(product => (
-                  <ProductSummaryCard product={product} />
-                ))}
-              </div>
-            </div>
+            <ProductTypeCard productType={productType} products={selectProductsWithProductType(productType.id, this.props.products)} key={productType.id}/>
           ))}
         </div>
       </div>
@@ -62,7 +44,8 @@ class ProductTypesPage extends React.Component {
 
 const mapStateToProps = (state) => ({
   isFetching: state.productTypes.isFetching,
-  productTypes: state.productTypes.productTypes
+  productTypes: state.productTypes.productTypes,
+  products: state.products.products
 });
 
 const ConnectedProductTypesPage = connect(mapStateToProps)(ProductTypesPage);

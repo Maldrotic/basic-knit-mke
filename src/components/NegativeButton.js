@@ -3,7 +3,7 @@ import Button from './button';
 
 const NegativeButton = (props) => (
   <Button className='button--negative'>
-    {props.children}
+    {props.text}
   </Button>
 );
 

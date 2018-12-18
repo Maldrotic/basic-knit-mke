@@ -1,0 +1,21 @@
+.card {
+  border: 1px solid;
+  border-radius: $xs-size;
+  box-shadow: 0 $xxs-size $xxs-size rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: $xs-size;
+  padding: $xs-size;
+}
+
+.card__header {
+  flex: 0 0 auto;
+}
+
+.card__content {
+  flex: 1 0 auto;
+}
+
+.card__footer {
+  flex: 0 0 auto;
+}

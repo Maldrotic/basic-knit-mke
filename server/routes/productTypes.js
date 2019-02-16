@@ -1,4 +1,5 @@
 const asyncHandler = require('../util/asyncHandler');
+const validateAuthToken = require('../middleware/validateAuthToken');
 
 module.exports = (db) => {
   const productTypesService = require('../services/productTypes')(db);
@@ -20,7 +21,7 @@ module.exports = (db) => {
   /**
    * Create a new product type.
    */
-  router.post('/', asyncHandler(async (req, res) => {
+  router.post('/', validateAuthToken, asyncHandler(async (req, res) => {
     let parentId = req.body.parentId;
     const name = req.body.name;
 

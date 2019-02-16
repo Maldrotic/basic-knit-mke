@@ -1,4 +1,5 @@
 const asyncHandler = require('../util/asyncHandler');
+const validateAuthToken = require('../middleware/validateAuthToken');
 
 module.exports = (db) => {
   const productsService = require('../services/products')(db);
@@ -24,7 +25,7 @@ module.exports = (db) => {
   /**
    * Create a new product.
    */
-  router.post('/', asyncHandler(async (req, res) => {
+  router.post('/', validateAuthToken, asyncHandler(async (req, res) => {
     const name = req.body.name;
     const productTypeId = req.body.productTypeId;
     const price = req.body.price;
@@ -67,7 +68,7 @@ module.exports = (db) => {
   /**
    * Upload an image for a product.
    */
-  router.post('/:id/images', asyncHandler(async (req, res) => {
+  router.post('/:id/images', validateAuthToken, asyncHandler(async (req, res) => {
     const id = req.params.id;
     return res.status(501);
   }));
@@ -83,7 +84,7 @@ module.exports = (db) => {
   /**
    * Update the primary image id for a product.
    */
-  router.put('/:id/images/primary_image_id', asyncHandler(async (req, res) => {
+  router.put('/:id/images/primary_image_id', validateAuthToken, asyncHandler(async (req, res) => {
     const id = req.params.id;
     const primaryImageId = req.body.primaryImageId;
     return res.status(501);

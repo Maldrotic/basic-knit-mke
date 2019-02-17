@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 const app = express();
 
 const Database = require('./util/database.js');
@@ -21,10 +20,6 @@ const dbConfig = {
   port            : process.env.RDS_PORT || process.env.DB_PORT || '3306'
 };
 const db = new Database(dbConfig);
-
-const localStrategy = require('./strategies/localStrategy')(db);
-passport.use('local', localStrategy.localStrategy);
-
 
 app.use('/api', indexRouter(db));
 

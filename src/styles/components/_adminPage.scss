@@ -1,8 +1,12 @@
 .admin {
-
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .admin__container {
-  margin: $l-size;
+  padding: $l-size;
+  flex: 1 1 auto;
+  overflow: auto;
 }
 

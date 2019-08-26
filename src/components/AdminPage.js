@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import ProductTypesPage from './ProductTypesPage';
-import AdminHeader from './AdminHeader';
 import AdminHomePage from './AdminHomePage';
+import AdminSidebar from './AdminSidebar';
 // import ProductTypePage from './ProductTypePage';
 // import AdminProductPage from './AdminProductPage';
 // import CreateProductTypePage from './CreateProductTypePage';
@@ -10,7 +10,7 @@ import AdminHomePage from './AdminHomePage';
 
 const AdminPage = ({match}) => (
   <div className='admin'>
-    <AdminHeader />
+    <AdminSidebar />
     <Switch>
       <Route path={`${match.url}`} component={AdminHomePage} exact={true} />
       <Route path={`${match.url}/product_types`} component={ProductTypesPage} exact={true} />

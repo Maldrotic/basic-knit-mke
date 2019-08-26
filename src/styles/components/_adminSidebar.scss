@@ -1,0 +1,56 @@
+.admin-sidebar {
+  align-items: center;
+  background-color: $dark-color;
+  color: $light-text-color;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+
+  &__container {
+    padding: $m-size;
+    align-items: center;
+    flex-direction: column;
+
+    &--top {
+      display: flex;
+      flex: 0 1 0;
+    }
+
+    &--middle {
+      display: flex;
+
+      &--static {
+        flex: 0 1 0;
+      }
+
+      &--grow {
+        flex: 1 1 auto;
+      }
+    }
+
+    &--bottom {
+      display: flex;
+      flex: 1 1 0;
+    }
+  }
+
+  &__item {
+    margin: 0 1rem;
+
+    &--user {
+
+    }
+
+    &--title {
+      font-weight: 800;
+      font-size: 2rem;
+    }
+
+    &--link {
+      a {
+        color: $light-text-color;
+        text-decoration: none;
+      }
+    }
+  }
+}

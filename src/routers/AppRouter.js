@@ -7,9 +7,14 @@ import AdminPage from '../components/AdminPage';
 import ProductPage from '../components/ProductPage';
 import {PrivateRoute} from './PrivateRoute';
 
+const style = {
+  height: '100%',
+  width: '100%'
+};
+
 const AppRouter = () => (
   <BrowserRouter>
-    <div>
+    <div style={style}>
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
         <Route path="/products/:id" component={ProductPage} exact={true} />

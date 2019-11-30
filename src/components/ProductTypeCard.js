@@ -9,6 +9,10 @@ import ProductSummaryCard from './ProductSummaryCard';
 
 class ProductTypeCard extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
 
   render() {
     return (

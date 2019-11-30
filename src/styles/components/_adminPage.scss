@@ -10,3 +10,22 @@
   overflow: auto;
 }
 
+.admin-page-header {
+
+}
+
+.admin-action-list {
+
+  display: flex;
+  flex-flow: row;
+
+  .admin-action-list__left {
+    flex: 0 1 auto;
+  }
+
+  .admin-action-list__right {
+    flex: 0 1 auto;
+  }
+
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProductTypes} from '../actions/productTypes';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import AdminPageTitle from './AdminPageTitle';
 import PrimaryButton from './PrimaryButton';
 import ProductSummaryCard from './ProductSummaryCard';
@@ -9,34 +9,44 @@ import NegativeButton from './NegativeButton';
 import {fetchProducts} from '../actions/products';
 import {selectProductsWithProductType} from '../selectors/products';
 import ProductTypeCard from './ProductTypeCard';
+import AdminPageHeaderTitle from './AdminPageHeaderTitle';
+import AdminSidebar from './AdminSidebar';
+import AdminProductTypesList from './AdminProductTypesList';
+import AdminActionList from './AdminActionList';
+import AdminActionListLeft from './AdminActionListLeft';
+import AdminActionListRight from './AdminActionListRight';
 
 class ProductTypesPage extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
 
   componentDidMount() {
     this.props.dispatch(fetchProductTypes());
     this.props.dispatch(fetchProducts());
   }
 
+  handleAddProductTypeButtonClicked = (e) => {
+    e.preventDefault();
+    this.props.history.push(`/admin/product_types/create`);
+  };
+
   render() {
     return (
-      <div className="product-types admin__container">
-        {/* TODO: One day have breadcrumbs here */}
+      <div className="admin__product_types admin__container">
         <AdminPageTitle>Product Types</AdminPageTitle>
-        <div className='product-types__actions'>
-          {/* TODO: show actions that can be done for product types */}
-          <div className='product-types__actions--left'>
+        {/* TODO: One day have breadcrumbs here */}
+        <AdminActionList>
+          <AdminActionListLeft>
 
-          </div>
-          <div className='product-types__actions--right'>
-            <PrimaryButton text='Add Product Type' />
-          </div>
-        </div>
-        <div className='product-types__lists'>
-          {/* TODO: loop through all product types and show products / stats at a glance */}
-          {this.props.productTypes && this.props.productTypes.map(productType => (
-            <ProductTypeCard productType={productType} products={selectProductsWithProductType(productType.id, this.props.products)} key={productType.id}/>
-          ))}
-        </div>
+          </AdminActionListLeft>
+          <AdminActionListRight>
+            <PrimaryButton text='Add Product Type' onClickHandler={this.handleAddProductTypeButtonClicked}/>
+          </AdminActionListRight>
+        </AdminActionList>
+        <AdminProductTypesList productTypes={this.props.productTypes} products={this.props.products}/>
       </div>
     );
   }

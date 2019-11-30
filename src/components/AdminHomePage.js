@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminPageTitle from './AdminPageTitle';
+import AdminSidebar from './AdminSidebar';
 
 class AdminHomePage extends React.Component {
 

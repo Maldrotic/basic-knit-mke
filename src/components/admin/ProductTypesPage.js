@@ -22,11 +22,10 @@ class ProductTypesPage extends React.Component {
     super(props);
   }
 
-
-  componentDidMount() {
-    this.props.dispatch(fetchProductTypes());
+  componentDidMount = async () => {
+    this.props.dispatch(await fetchProductTypes());
     this.props.dispatch(fetchProducts());
-  }
+  };
 
   handleAddProductTypeButtonClicked = (e) => {
     e.preventDefault();

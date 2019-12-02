@@ -1,5 +1,6 @@
 const asyncHandler = require('../util/asyncHandler');
 const validateAuthToken = require('../middleware/validateAuthToken');
+const validateAdminAuthToken = require('../middleware/validateAdminAuthToken');
 
 module.exports = (db) => {
   const productTypesService = require('../services/productTypes')(db);
@@ -21,14 +22,14 @@ module.exports = (db) => {
   /**
    * Create a new product type.
    */
-  router.post('/', validateAuthToken, asyncHandler(async (req, res) => {
+  router.post('/', validateAdminAuthToken, asyncHandler(async (req, res) => {
     let parentId = req.body.parentId;
     const name = req.body.name;
 
     if (!name)
       return res.status(400).send('Missing POST body arguments');
 
-    if (parentId == 0) {
+    if (parentId === 0) {
       parentId = undefined;
     }
 
@@ -37,7 +38,7 @@ module.exports = (db) => {
 
     return res.status(200).json({
       id: newProductTypeId,
-      parent_id: parentId,
+      parentId: parentId,
       name: name,
     });
   }));

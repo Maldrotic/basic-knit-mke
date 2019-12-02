@@ -10,6 +10,7 @@ import {
 
 const defaultProductTypesState = {
   isFetching: false,
+  isCreating: false,
   productTypes: [],
   errorMessage: null
 };
@@ -50,18 +51,18 @@ export default (state = defaultProductTypesState, action) => {
     case CREATE_PRODUCT_TYPE:
       return {
         ...state,
-        isFetching: true
+        isCreating: true
       };
     case CREATE_PRODUCT_TYPE_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isCreating: false,
         productTypes: [...state.productTypes, action.productType]
       };
     case CREATE_PRODUCT_TYPE_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isCreating: false,
         errorMessage: action.errorMessage
       };
     default:

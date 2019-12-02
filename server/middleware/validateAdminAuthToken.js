@@ -7,20 +7,12 @@ module.exports = (req, res, next) => {
 
   if(typeof header !== 'undefined') {
     const bearer = header.split(' ');
-    const token = bearer[1];
-
-    req.token = token;
+    req.token = bearer[1];
     jwt.verify(req.token, config['jwt-secret'], (err, authorizedData) => {
       if (err){
-        //If error send Forbidden (403)
-        console.log('ERROR: Could not connect to the protected route');
         return res.sendStatus(403);
       } else {
-        //If token is successfully verified, we can send the authorized data
-        console.log('SUCCESS: Connected to protected route');
-        console.log(authorizedData.user);
-        let user = User.fromObject(authorizedData.user);
-        if (authorizedData.user.userTypeId !== User.ADMIN_ROLE_ID) {
+        if (authorizedData.user.userTypeId !== userModel.ADMIN_ROLE_ID) {
           return res.sendStatus(403);
         }
         next();

@@ -1,4 +1,5 @@
-import {productTypesService} from '../services/productTypes';
+import ProductTypesService from '../services/productTypes';
+import Product from '../models/product';
 
 export const REQUEST_PRODUCT_TYPES = 'REQUEST_PRODUCT_TYPES';
 const requestProductTypes = () => ({
@@ -17,14 +18,15 @@ const getProductTypesFailure = (errorMessage) => ({
   errorMessage
 });
 
-export const fetchProductTypes = () => (dispatch) => {
+export const fetchProductTypes = () => async (dispatch) => {
   dispatch(requestProductTypes());
-  return productTypesService.getAll()
-    .then(productTypes => {
-      dispatch(getProductTypesSuccess(productTypes))
-    }, error => {
-      dispatch(getProductTypesFailure(error))
-    });
+  try {
+    const productTypes = await ProductTypesService.getAll();
+    dispatch(getProductTypesSuccess(productTypes));
+  } catch (error) {
+    console.log(error);
+    dispatch(getProductTypeFailure(error))
+  }
 };
 
 export const REQUEST_PRODUCT_TYPE = 'REQUEST_PRODUCT_TYPE';
@@ -46,7 +48,7 @@ const getProductTypeFailure = (errorMessage) => ({
 
 export const fetchProductType = (productTypeId) => (dispatch) => {
   dispatch(requestProductType());
-  return productTypesService.get(productTypeId)
+  return ProductTypesService.get(productTypeId)
     .then(productType => {
       dispatch(getProductTypeSuccess(productType));
     }, error => {
@@ -71,13 +73,13 @@ const createProductTypeFailure = (errorMessage) => ({
   errorMessage
 });
 
-export const createProductType = ({parentId = null, name = null} = {}) =>  dispatch => {
+export const createProductType = ({parentId = null, name = null} = {}, authToken) =>  async dispatch => {
   dispatch(requestCreateProductType());
-  return productTypesService.create({parentId, name})
-    .then(productType => {
-      dispatch(createProductTypeSuccess(productType));
-    }, error => {
-      dispatch(createProductTypeFailure(error));
-    });
+  try {
+    const productType = await ProductTypesService.create({parentId, name}, authToken);
+    dispatch(createProductTypeSuccess(productType));
+  } catch (error) {
+    dispatch(createProductTypeFailure(error.message));
+  }
 };
 

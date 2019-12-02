@@ -1,4 +1,4 @@
-import {productsService} from '../services/products';
+import ProductsService from '../services/products';
 
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
 const requestProducts = () => ({
@@ -19,7 +19,7 @@ const getProductsFailure = (errorMessage) => ({
 
 export const fetchProducts = () => (dispatch) => {
   dispatch(requestProducts());
-  return productsService.getAll()
+  return ProductsService.getAll()
     .then(products => {
       dispatch(getProductsSuccess(products));
     }, error => {

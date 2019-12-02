@@ -1,10 +1,10 @@
 import React from 'react';
-import {selectProductType, selectProductTypesChildren} from '../selectors/productTypes';
+import {selectProductType, selectProductTypesChildren} from '../../selectors/productTypes';
 import {connect} from 'react-redux';
-import {selectProductsWithProductType} from '../selectors/products';
+import {selectProductsWithProductType} from '../../selectors/products';
 import {Link} from 'react-router-dom';
-import {fetchProductTypes} from '../actions/productTypes';
-import {fetchProductsForProductType} from '../actions/products';
+import {fetchProductTypes} from '../../actions/productTypes';
+import {fetchProductsForProductType} from '../../actions/products';
 import {Breadcrumb, Button, Glyphicon} from 'react-bootstrap';
 
 class ProductTypePage extends React.Component {

@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const userModel = require('../models/user');
 
 module.exports = (req, res, next) => {
   const header = req.headers['authorization'];
@@ -10,14 +11,18 @@ module.exports = (req, res, next) => {
 
     req.token = token;
     jwt.verify(req.token, config['jwt-secret'], (err, authorizedData) => {
-      if(err){
+      if (err){
         //If error send Forbidden (403)
         console.log('ERROR: Could not connect to the protected route');
-        res.sendStatus(403);
+        return res.sendStatus(403);
       } else {
         //If token is successfully verified, we can send the authorized data
         console.log('SUCCESS: Connected to protected route');
         console.log(authorizedData.user);
+        let user = User.fromObject(authorizedData.user);
+        if (authorizedData.user.userTypeId !== User.ADMIN_ROLE_ID) {
+          return res.sendStatus(403);
+        }
         next();
       }
     });

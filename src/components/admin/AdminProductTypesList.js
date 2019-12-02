@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductTypeCard from './ProductTypeCard';
-import {selectProductsWithProductType} from '../selectors/products';
+import {selectProductsWithProductType} from '../../selectors/products';
 
 
 class AdminProductTypesList extends React.Component {

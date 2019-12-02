@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {selectProduct} from '../selectors/products';
+import {selectProduct} from '../../selectors/products';
 import {Breadcrumb} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {fetchProduct} from '../actions/products';
+import {fetchProduct} from '../../actions/products';
 
 class AdminProductPage extends React.Component {
 

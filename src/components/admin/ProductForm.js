@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchProductTypes} from '../actions/productTypes';
+import {fetchProductTypes} from '../../actions/productTypes';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 

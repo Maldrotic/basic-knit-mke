@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ProductTypeForm from './ProductTypeForm';
-import {editProductType, removeProductType} from '../actions/productTypes';
+import {editProductType, removeProductType} from '../../actions/productTypes';
 
 class EditProductTypePage extends React.Component {
 

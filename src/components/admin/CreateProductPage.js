@@ -2,9 +2,9 @@ import React from 'react';
 import {Breadcrumb} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {createProduct} from '../actions/products';
-import {fetchProductTypes} from '../actions/productTypes';
-import {selectProductType} from '../selectors/productTypes';
+import {createProduct} from '../../actions/products';
+import {fetchProductTypes} from '../../actions/productTypes';
+import {selectProductType} from '../../selectors/productTypes';
 import ProductForm from './ProductForm';
 import queryString from 'query-string';
 

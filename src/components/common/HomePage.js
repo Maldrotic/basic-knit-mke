@@ -2,11 +2,11 @@ import React from 'react';
 import HomePageHero from './HomePageHero';
 import Header from './Header';
 import {StickyContainer, Sticky} from 'react-sticky';
-import {selectBaseProductTypes} from '../selectors/productTypes';
+import {selectBaseProductTypes} from '../../selectors/productTypes';
 import {connect} from 'react-redux';
-import ProductList from './ProductList';
-import {fetchProductTypes} from '../actions/productTypes';
-import {fetchProducts} from '../actions/products';
+import ProductList from '../home/ProductList';
+import {fetchProductTypes} from '../../actions/productTypes';
+import {fetchProducts} from '../../actions/products';
 
 class HomePage extends React.Component {
 

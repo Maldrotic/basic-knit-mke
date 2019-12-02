@@ -5,26 +5,21 @@ module.exports = db => {
   const getByEmail = async (email) => {
     const results = await db.query(`SELECT
                                       u.id as user_id,
-                                      u.name,
-                                      u.email,
-                                      u.password_hash,
-                                      ut.id as user_type_id,
-                                      ut.name as user_type_name
+                                      u.name as name,
+                                      u.email as email,
+                                      u.password_hash as password_hash,
+                                      u.user_type_id as user_type_id
                                     FROM users u
-                                    JOIN user_types ut ON ut.id = u.user_type_id
                                     WHERE u.email = ?`, [email]);
 
     if (results.length === 1) {
       const row = results[0];
       return {
-        id: row.id,
+        id: row.user_id,
         name: row.name,
         email: row.email,
         passwordHash: row.password_hash,
-        type: {
-          id: row.user_type_id,
-          name: row.user_type_name
-        }
+        userTypeId: row.user_type_id
       };
     } else {
       return null;

@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-const AdminSidebar = () => (
+const AdminSidebar = (props) => (
   <div className='admin-sidebar'>
     <div className='admin-sidebar__container admin-sidebar__container--top'>
       <div className='admin-sidebar__item admin-sidebar__item--title admin-sidebar__item--link'>
@@ -11,7 +12,7 @@ const AdminSidebar = () => (
     <div className='admin-sidebar__container admin-sidebar__container--middle--static'>
       <div className='admin-sidebar__item admin-sidebar__item--user'>
         <hr/>
-        Welcome, user!
+        Welcome, {props.user ? props.user.name : 'user'}
         <hr/>
       </div>
     </div>
@@ -26,4 +27,8 @@ const AdminSidebar = () => (
   </div>
 );
 
-export default AdminSidebar;
+const mapStateToProps = (state) => ({
+  user: state.auth.user
+});
+
+export default connect(mapStateToProps)(AdminSidebar);

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductTypeForm from './ProductTypeForm';
-import {createProductType} from '../actions/productTypes';
+import {createProductType} from '../../actions/productTypes';
 import {connect} from 'react-redux';
 
 class CreateProductTypePage extends React.Component {

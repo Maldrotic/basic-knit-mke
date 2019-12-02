@@ -1,15 +1,15 @@
 import React from 'react';
-import {fetchProduct} from '../actions/products';
-import {selectProduct} from '../selectors/products';
+import {fetchProduct} from '../../actions/products';
+import {selectProduct} from '../../selectors/products';
 import {connect} from 'react-redux';
-import {selectProductTypeForProduct} from '../selectors/productTypes';
-import {fetchProductType} from '../actions/productTypes';
+import {selectProductTypeForProduct} from '../../selectors/productTypes';
+import {fetchProductType} from '../../actions/productTypes';
 import ProductImage from './ProductImage';
 import ProductName from './ProductName';
 import ProductTypeName from './ProductTypeName';
 import ProductDescription from './ProductDescription';
 import ProductPrice from './ProductPrice';
-import Header from './Header';
+import Header from '../common/Header';
 
 class ProductPage extends React.Component {
 

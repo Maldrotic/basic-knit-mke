@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from './Card';
-import CardHeader from './CardHeader';
-import CardContent from './CardContent';
-import CardFooter from './CardFooter';
-import PrimaryButton from './PrimaryButton';
-import NegativeButton from './NegativeButton';
+import Card from '../common/Card';
+import CardHeader from '../common/CardHeader';
+import CardContent from '../common/CardContent';
+import CardFooter from '../common/CardFooter';
+import PrimaryButton from '../common/PrimaryButton';
+import NegativeButton from '../common/NegativeButton';
 import ProductSummaryCard from './ProductSummaryCard';
 
 class ProductTypeCard extends React.Component {

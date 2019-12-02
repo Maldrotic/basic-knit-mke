@@ -13,18 +13,23 @@ module.exports = (db) => {
 
     const user = await usersService.getByEmail(email);
     if (user === null) {
-      return res.status(404).send({error: 'User not found'});
+      return res.status(404).send({error_message: 'User not found'});
     }
 
     const passwordIsValid = await bcrypt.compare(password, user.passwordHash);
     if (!passwordIsValid) {
-      return res.status(401).send({error: 'Incorrect password'});
+      return res.status(401).send({error_message: 'Incorrect password'});
     }
 
-    const token = authService.generateUserAuthToken(user);
+    const token = await authService.generateUserAuthToken(user);
 
     return res.status(200).send({
-      user,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        userTypeId: user.userTypeId
+      },
       token
     });
   }));
